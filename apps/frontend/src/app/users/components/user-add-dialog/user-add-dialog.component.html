@@ -1,0 +1,65 @@
+<h2 mat-dialog-title>User erstellen</h2>
+<mat-dialog-content>
+  <form [formGroup]="form" class="form">
+    <mat-form-field>
+      <mat-label>Vorname</mat-label>
+      <input matInput formControlName="firstName" />
+      @if (form.get('firstName')?.hasError('required')) {
+        <mat-error>Pflichtfeld</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Nachname</mat-label>
+      <input matInput formControlName="lastName" />
+      @if (form.get('lastName')?.hasError('required')) {
+        <mat-error>Pflichtfeld</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>E-Mail</mat-label>
+      <input matInput type="email" formControlName="email" />
+      @if (form.get('email')?.hasError('required')) {
+        <mat-error>Pflichtfeld</mat-error>
+      }
+      @if (form.get('email')?.hasError('email')) {
+        <mat-error>Ungültige E-Mail</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Rolle</mat-label>
+      <mat-select formControlName="role">
+        <mat-option value="admin">Admin</mat-option>
+        <mat-option value="editor">Editor</mat-option>
+        <mat-option value="viewer">Viewer</mat-option>
+      </mat-select>
+      @if (form.get('role')?.hasError('required')) {
+        <mat-error>Pflichtfeld</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Telefon</mat-label>
+      <input matInput formControlName="phoneNumber" />
+      @if (form.get('phoneNumber')?.hasError('required')) {
+        <mat-error>Pflichtfeld</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Geburtsdatum</mat-label>
+      <input matInput type="date" formControlName="birthDate" />
+      @if (form.get('birthDate')?.hasError('required')) {
+        <mat-error>Pflichtfeld</mat-error>
+      }
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Abbrechen</button>
+  <button mat-raised-button color="primary" (click)="onSubmit()" [disabled]="form.invalid">
+    Erstellen
+  </button>
+</mat-dialog-actions>

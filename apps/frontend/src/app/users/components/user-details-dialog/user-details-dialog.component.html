@@ -1,0 +1,43 @@
+<h2 mat-dialog-title>User Details</h2>
+<mat-dialog-content>
+  @if (loading()) {
+    <div class="loading">
+      <mat-spinner diameter="40"></mat-spinner>
+    </div>
+  }
+  @if (user()) {
+    <div class="details">
+      <div class="detail-row">
+        <strong>ID:</strong>
+        <span>{{ user()!.id }}</span>
+      </div>
+      <div class="detail-row">
+        <strong>Name:</strong>
+        <span>{{ user()!.firstName }} {{ user()!.lastName }}</span>
+      </div>
+      <div class="detail-row">
+        <strong>Email:</strong>
+        <span>{{ user()!.email }}</span>
+      </div>
+      <div class="detail-row">
+        <strong>Rolle:</strong>
+        <span>{{ user()!.role }}</span>
+      </div>
+      @if (user()?.phoneNumber) {
+        <div class="detail-row">
+          <strong>Telefon:</strong>
+          <span>{{ user()!.phoneNumber }}</span>
+        </div>
+      }
+      @if (user()?.birthDate) {
+        <div class="detail-row">
+          <strong>Geburtsdatum:</strong>
+          <span>{{ user()!.birthDate | date:'dd.MM.yyyy' }}</span>
+        </div>
+      }
+    </div>
+  }
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Schließen</button>
+</mat-dialog-actions>

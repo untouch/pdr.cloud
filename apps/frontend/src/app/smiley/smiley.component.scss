@@ -1,0 +1,151 @@
+$smiley-face-color: #f4d662;
+$smiley-feature-color: #755616;
+$smiley-tongue-color: #e88ca0;
+$smiley-tongue-line-color: #d46b85;
+$smiley-size: min(80vw, 500px);
+$smiley-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+
+.smiley-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: var(--mat-sys-surface);
+}
+
+
+.smiley-face {
+  width: $smiley-size;
+  height: $smiley-size;
+  background: $smiley-face-color;
+  border-radius: 50%;
+  box-shadow: $smiley-shadow;
+
+  display: grid;
+  grid-template-columns: 0.5fr 1fr 0.8fr 1fr 0.8fr 1fr 0.8fr 1fr 0.5fr;
+  grid-template-rows: 0.8fr 1fr 0.8fr 1fr 1.2fr 1fr 0.5fr;
+  padding: 10%;
+  box-sizing: border-box;
+  overflow: hidden;
+  justify-content: center;
+  align-content: center;
+}
+
+.smiley-eye {
+  background: $smiley-feature-color;
+  width: 60px;
+  height: 90px;
+  border-radius: 50%;
+  grid-row: 2;
+  align-self: center;
+  justify-self: center;
+}
+
+.smiley-eye--left {
+  grid-column: 2;
+}
+
+.smiley-eye--right {
+  grid-column: 8;
+}
+
+.smiley-mouth {
+  background: $smiley-feature-color;
+
+  grid-row: 5 / 7;
+  grid-column: 1 / -1;
+
+  width: 320px;
+  height: 140px;
+  border-radius: 0 0 160px 160px;
+
+  align-self: start;
+  justify-self: center;
+
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  overflow: visible;
+}
+
+
+.smiley-tongue {
+  background: $smiley-tongue-color;
+  width: 140px;
+  height: 140px;
+  border-radius: 0 0 70px 70px;
+  margin-bottom: -70px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 20px;
+  box-sizing: border-box;
+}
+
+.smiley-tongue__line {
+  background: $smiley-tongue-line-color;
+  width: 14px;
+  height: 70px;
+  border-radius: 7px;
+  align-self: flex-start;
+  margin-top: 25px;
+}
+
+@media (max-width: 768px) {
+  .smiley-eye {
+    width: 45px;
+    height: 70px;
+  }
+
+  .smiley-mouth {
+    width: 240px;
+    height: 110px;
+    border-radius: 0 0 120px 120px;
+  }
+
+  .smiley-tongue {
+    width: 105px;
+    height: 105px;
+    border-radius: 0 0 52px 52px;
+    margin-bottom: -52px;
+  }
+
+  .smiley-tongue__line {
+    width: 11px;
+    height: 54px;
+    margin-top: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .smiley-eye {
+    width: 35px;
+    height: 55px;
+  }
+
+  .smiley-mouth {
+    width: 180px;
+    height: 85px;
+    border-radius: 0 0 90px 90px;
+  }
+
+  .smiley-tongue {
+    width: 80px;
+    height: 80px;
+    border-radius: 0 0 40px 40px;
+    margin-bottom: -40px;
+  }
+
+  .smiley-tongue__line {
+    width: 8px;
+    height: 40px;
+    margin-top: 15px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .smiley-face {
+    transition: none;
+  }
+}
